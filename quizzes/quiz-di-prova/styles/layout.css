@@ -1,0 +1,42 @@
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 15px;
+	margin-left: 0px;
+	padding: 0px;
+	color: #000000;
+	background-color: #FFFFFF;
+	background-image: url('../media/intelligenza.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left top;
+	background-size: auto;
+	font-family: League Spartan Thin;
+	font-size: 12pt;
+}
+#idQuizHeaderLogo {
+	display: none;
+}
+.class_title {
+}
+.class_subtitle {
+}
+.class_remarks {
+}
+.class_qst_format {
+}
+.class_before_after_qst_format {
+}
+.class_ans_format {
+}
+.class_feedback_format {
+}
+.class_openans_text_format {
+}
+.class_feedback_table_format {
+	border-width: 0px;
+	border-style: solid;
+	border-color: #000000;
+	border-radius: 10px;
+}
+

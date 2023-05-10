@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Test_intelligenza</title>
+
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Author" content="Made with QuizFaber 4.1.9">
+    <meta name="generator" content="QuizFaber 4.1.9">
+    <meta name="keywords" content="quiz">
+    <meta name="description" content="Test d&#39;intelligenza">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../scripts/error.js"></script>
+    <script src="../scripts/definitions.js"></script>
+    <script src="../scripts/security.js"></script>
+    <script src="../scripts/cookie.js"></script>
+    <script src="../scripts/storage.js"></script>
+    <script src="../scripts/time.js"></script>
+    <script src="../scripts/valuation.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/utility.js"></script>
+    <script src="../scripts/engine.js"></script>
+    <script src="../scripts/recovery.js"></script>
+    <script src="../scripts/view.js"></script>
+    <script src="../scripts/matching.js"></script>
+    <script src="../scripts/initquestions.js"></script>
+    <script src="../scripts/lightbox.js"></script>
+    <script src="../scripts/bootoast.min.js"></script>
+
+    <script src="../scripts/page_00002.js"></script>
+    
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/lightbox.css">
+    <link rel="stylesheet" href="../styles/bootoast.min.css">
+    
+
+</head>
+<body>
+    <div class="container">
+
+        <div class="jumbotron qf-jumbotron-class" id="idQuizHeader">
+
+            <div class="row">
+                <div class="col-md-3" id="idQuizHeaderLogo">
+                    <div id="idQuizHeaderLogoImg"></div>
+                </div>
+                <div class="col-md-9" id="idQuizHeaderText">
+                    <h1 id="idQuizTitle"></h1>
+                    <p class="lead">
+                        <span id="idQuizDescription"></span>
+                    <p id="idQuizProfile" style="display:none">
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#idQuizProfileInfo">Dettagli</button>
+                        <div id="idQuizProfileInfo" class="collapse">
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Autore</strong><span class="pull-right" id="idAuthor"></span></li>
+                                <li class="list-group-item"><strong>Argomento</strong><span class="pull-right" id="idArgument"></span></li>
+                                <li class="list-group-item"><strong>Organizzazione o istituto</strong><span class="pull-right" id="idCompany"></span></li>
+                                <li class="list-group-item"><strong>Data</strong><span class="pull-right" id="idDate"></span></li>
+                            </ul>
+                        </div>
+                    </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="divErrorGlobal" class="alert alert-danger alert-dismissible fade in" style="display:none">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Errore!</strong> <span id="idErrorMsgGlobal"></span>
+        </div>
+        <div id="divWarningGlobal" class="alert alert-warning alert-dismissible fade in" style="display:none">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Attenzione!</strong> <span id="idWarningMsgGlobal" />
+        </div>
+
+        <div id="allPanelsId" class="qf-panel-all-questions-class">
+
+            <div class="well" id="idSectionTextIntro" style="display:none"></div>
+
+            <div class="panel panel-primary qf-panel-question-class" id="idPanel2">
+
+                <div class="panel-heading qf-panel-question-heading-class"><b>Domanda <span id="idQuestionNumber" /></b></div>
+
+                <div class="panel-body qf-panel-question-body-class">
+                    <div id="divSuccess1" class="alert alert-success alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> Risposta corretta</div>
+<div id="divFail1" class="alert alert-danger alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> Risposta errata</div>
+<div id="divPartiallyCorrect1" class="alert alert-warning alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> Risposta parzialmente corretta</div>
+<div id="divInfo1" class="alert alert-info alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> Risposta completata</div>
+<div id="divWarning1" class="alert alert-warning alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> <strong>Attenzione!</strong> <span id="idWarningMsg1" ></span></div>
+<div id="divError1" class="alert alert-danger alert-dismissible fade in" style="display:none" ><a class="close" data-dismiss="alert" aria-label="close" >&times;</a> <strong>Errore!</strong> <span id="idErrorMsg1" ></span></div>
+<p><span class="class_qst_format text_full_width"><p><span style="background-color:#FFFFFF;font-family:Times New Roman;font-size:12pt;">Chi ha scoperto l&#39;America?</span></p></span></p><form><div class="checkbox" ><label style="display:inline-block;width:100%;margin-left:7px;" ><input id="idCheckbox1_0" type="checkbox" value="1" class="checkbox_answer" /><span class="class_ans_format text_full_width"><p><span style="background-color:#FFFFFF;font-family:Times New Roman;font-size:12pt;">Ferdinando Magellano</span></p></span></label><br/></div><div class="checkbox" ><label style="display:inline-block;width:100%;margin-left:7px;" ><input id="idCheckbox1_1" type="checkbox" value="2" class="checkbox_answer" /><span class="class_ans_format text_full_width"><p><span style="background-color:#FFFFFF;font-family:Times New Roman;font-size:12pt;">Cristoforo Colombo</span></p></span></label><br/></div><div class="checkbox" ><label style="display:inline-block;width:100%;margin-left:7px;" ><input id="idCheckbox1_2" type="checkbox" value="3" class="checkbox_answer" /><span class="class_ans_format text_full_width"><p><span style="background-color:#FFFFFF;font-family:Times New Roman;font-size:12pt;">Francis Crick</span></p></span></label><br/></div><div class="checkbox" ><label style="display:inline-block;width:100%;margin-left:7px;" ><input id="idCheckbox1_3" type="checkbox" value="4" class="checkbox_answer" /><span class="class_ans_format text_full_width"><p><span style="background-color:#FFFFFF;font-family:Times New Roman;font-size:12pt;">Amerigo Vespucci</span></p></span></label><br/></div></form>
+<p class="text-center" ><button type="button" id="idOkButton1" class="btn btn-primary btn_confirm_question" onclick="onOkButtonClick(InitQuestion2)" >OK</button></p>
+
+                </div>
+
+                <div class="panel-footer" id="idQuizControlFooter">
+
+                    <div class="row">
+                        <div class="col-sm-1"><span id="idClock"></span></div>
+                        <div class="col-sm-2">
+                            <div class="progress" id="idProgressBarTimeToAnswer" style="display:none">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" id="idDivCorrectAnswer">corrette <span id="idCorrectAnswers" class="badge"></span> </div>
+                        <div class="col-sm-2" id="idDivWrongAnswer">errate <span id="idWrongAnswers" class="badge"></span> </div>
+                        <div class="col-sm-2" id="idDivToBeAnswered">da rispondere <span id="idToBeAnswered" class="badge"></span> </div>
+                        <div class="col-sm-3 text-right">
+                            <button id="idBtnRetire" type="button" class="btn btn-warning" onclick="onAbandonButtonClick()" style="display:none">Ritiro</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+
+            <div class="well" id="idSectionTextEpilogue" style="display:none"></div>
+
+            <ul class="pager">
+                <li class="previous"><a id="idLinkPrev" href="javascript:GoPreviousPage()">Indietro</a></li>
+                <li class="next"><a id="idLinkNext" href="javascript:GoNextPage()">Avanti</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="idModalNotification" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Informazione</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="idModalNotificationText"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="idModalNotificationCloseButton" type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="idModalConfirmation" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Conferma</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="idModalConfirmationText"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="idModalConfirmationYesButton" type="button" data-dismiss="modal" class="btn btn-primary">Si</button>
+                    <button id="idModalConfirmationNoButton" type="button" data-dismiss="modal" class="btn">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sounds -->
+    <audio id="idCorrectAnswerSound" src="" />
+    <audio id="idWrongAnswerSound" src="" />
+    <audio id="idPartiallyCorrectAnswerSound" src="" />
+    <audio loop muted autoplay id="idBackgroundSound" src="" />
+
+    <script>
+        function PageOnScroll() { }
+    </script>
+
+</body>
+</html>
