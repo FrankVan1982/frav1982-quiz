@@ -32,15 +32,15 @@
         </Points>
         <UseInternalLibrary>False</UseInternalLibrary>
         <Questions>
-          <QuestSlide>True</QuestSlide>
+          <QuestSlide>False</QuestSlide>
           <NoButtonConfirm>False</NoButtonConfirm>
           <LockRightAns>False</LockRightAns>
-          <ConfirmEachQst>True</ConfirmEachQst>
+          <ConfirmEachQst>False</ConfirmEachQst>
           <QstBorder>False</QstBorder>
           <OkButtonText>OK</OkButtonText>
           <VerifyButtonText>Verifica</VerifyButtonText>
           <VerifyLabel>Al termine del quiz premi il pulsante 'VERIFICA' qui' a fianco</VerifyLabel>
-          <UniqueButtonPosition>0</UniqueButtonPosition>
+          <UniqueButtonPosition>1</UniqueButtonPosition>
           <LockMatchingLeftCol>False</LockMatchingLeftCol>
           <PauseQuestSlide>False</PauseQuestSlide>
           <NeedAnswer>False</NeedAnswer>
@@ -65,10 +65,10 @@
           <BackgroundSound></BackgroundSound>
         </Sounds>
         <Saving>
-          <SaveLevel>5</SaveLevel>
-          <WebAppURL></WebAppURL>
-          <SpreadSheetName></SpreadSheetName>
-          <SpreadSheetURL></SpreadSheetURL>
+          <SaveLevel>4</SaveLevel>
+          <WebAppURL>https://script.google.com/macros/s/AKfycbzShJ-UIoB7q06eqHS07LXejhlwa5EIX71ducS-pJq42Vjz9-Zf9t2FsFtml4C3amGcoQ/exec</WebAppURL>
+          <SpreadSheetName>quiz-di-prova_results</SpreadSheetName>
+          <SpreadSheetURL>https://docs.google.com/spreadsheets/d/1_mYu5Ku5zv1CisUn8m36DFkZa56pPIVFTHldD4UsMek/edit</SpreadSheetURL>
           <UseLocalHost>True</UseLocalHost>
           <WebAddress>IdOphLA6XrJ2@ep-calm-sea-945973-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb</WebAddress>
           <PortNum>5432</PortNum>
@@ -116,13 +116,13 @@
           <InFields />
         </Customer>
         <FinalAction>
-          <AskPrintQuiz>False</AskPrintQuiz>
+          <AskPrintQuiz>True</AskPrintQuiz>
           <LinkBack></LinkBack>
           <LinkName></LinkName>
           <OpenNewWin>True</OpenNewWin>
           <IncludePrintBtn>True</IncludePrintBtn>
           <NoLinkback>True</NoLinkback>
-          <ReviewQuiz>False</ReviewQuiz>
+          <ReviewQuiz>True</ReviewQuiz>
           <RepeatMode>0</RepeatMode>
           <MinRepeatMark>6</MinRepeatMark>
           <MaxRepeatTimes>100</MaxRepeatTimes>
@@ -606,61 +606,57 @@
       </layout>
       <quizparams>
         <QuizFileName>Test_intelligenza</QuizFileName>
-        <QuizDir>C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova</QuizDir>
+        <QuizDir>C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova</QuizDir>
         <MediaDir>media</MediaDir>
         <QuizNamesList>
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\background.jpg" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\blank.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\close.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\correct.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\glasses.gif" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\hint.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\ko.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\loading.gif" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\logo.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\music.gif" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\next.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\ok.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\prev.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\smile.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\square.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\video.gif" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\images\wrong.png" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\cookie.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\definitions.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\engine.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\login.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\matching.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\navigation.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\results.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\security.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\storage.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\time.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\utility.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\valuation.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\view.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\error.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\lightbox.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\recovery.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\bootoast.min.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\styles\main.css" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\styles\lightbox.css" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\styles\bootoast.min.css" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\styles\font-awesome.min.css" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\fonts\fontawesome-webfont.ttf" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\pages\page_00001.html" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\page_00001.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\pages\page_00002.html" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\page_00002.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\initquestions.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\index.html" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\pages\results.html" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\pages\final.html" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\page_index.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\page_results.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\scripts\page_final.js" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\styles\layout.css" />
-          <Item Value="C:\Users\franc\OneDrive\Desktop\quiz\Quiz di Prova\media\intelligenza.jpg" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\background.jpg" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\blank.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\close.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\correct.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\glasses.gif" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\hint.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\ko.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\loading.gif" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\logo.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\music.gif" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\next.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\ok.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\prev.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\smile.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\square.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\video.gif" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\images\wrong.png" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\cookie.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\definitions.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\engine.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\login.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\matching.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\navigation.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\results.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\security.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\storage.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\time.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\utility.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\valuation.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\view.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\error.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\lightbox.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\recovery.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\bootoast.min.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\styles\main.css" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\styles\lightbox.css" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\styles\bootoast.min.css" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\styles\font-awesome.min.css" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\fonts\fontawesome-webfont.ttf" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\pages\page.html" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\page.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\index.html" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\pages\results.html" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\pages\final.html" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\page_index.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\page_results.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\scripts\page_final.js" />
+          <Item Value="C:\Users\franc\frav1982-quiz\quizzes\quiz-di-prova\styles\layout.css" />
           <Item Value="" />
           <Item Value="" />
           <Item Value="" />
@@ -679,7 +675,7 @@
         <ShortcutFileName>index.html</ShortcutFileName>
         <DefCharset>Windows-1252</DefCharset>
         <UseDefCharset>True</UseDefCharset>
-        <AutoPassword>x63eba2EJli0uPhM</AutoPassword>
+        <AutoPassword>7xu@gtPn98MRjzPn</AutoPassword>
         <HasSeparator>False</HasSeparator>
         <IsAnswersOnSameLine>False</IsAnswersOnSameLine>
         <UsePHP>False</UsePHP>

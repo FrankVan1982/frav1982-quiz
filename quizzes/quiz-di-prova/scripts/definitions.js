@@ -43,7 +43,7 @@ const QMAKE_SEND_WEBAPP = 4;
 const QMAKE_SEND_NODEJS = 5;
 const QMAKE_SEND_NODEJS_LOCAL = 6;  
 
-const QUIZ_KEYWORD = "x63eba2EJli0uPhM";
+const QUIZ_KEYWORD = "7xu@gtPn98MRjzPn";
 
 const USER_LOGIN_ANONYMOUS = "Anonymous";
 const USER_EMAIL_ANONYMOUS = "anonymous@anonymous.nowhere";
@@ -67,7 +67,7 @@ const options =
 	maxmark: 10,
 	minmark: 0,
 	roundmark: 1,
-	questSlide: true,
+	questSlide: false,
 	lockRightAns: false,
 	computeMarkFnType: QMAKE_COMPUTE_MARK_BASIC,
 	randQuest: false,
@@ -76,8 +76,8 @@ const options =
 	verifyAtLeastOneChoice: false,
 	radioChoiceInsteadOkButton: false,
 	silentBeforeEndQuiz: false,
-	uniqueOkButton: false,
-	uniqueOkButtonPos: 'TOP',
+	uniqueOkButton: true,
+	uniqueOkButtonPos: 'BOTTOM',
 	showTimeout: true,
 	allowAbandonFromQuiz: false,
 	valuateAfterAbandon: false,
@@ -87,7 +87,7 @@ const options =
 	showFullAnsReport: true,
 	showFullRemReport: false,
 	reportNotation: QMAKE_REPNOT_SIMPLE,
-	reviewQuizAtTheEnd: false,
+	reviewQuizAtTheEnd: true,
 	msgForNoValuateQuiz : '',
 	matchingLockLeftCol: false,
 	showFinalMark: true,
@@ -98,8 +98,8 @@ const options =
 	clearAlwaysHistory: true,
 	disableRightClickMenu: true,
 	needSaveQuiz: true,
-	saveQuizMode: QMAKE_SEND_NODEJS,
-	saveQuizUrl: "http://IdOphLA6XrJ2@ep-calm-sea-945973-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb:5432",
+	saveQuizMode: QMAKE_SEND_WEBAPP,
+	saveQuizUrl: "https://script.google.com/macros/s/AKfycbzShJ-UIoB7q06eqHS07LXejhlwa5EIX71ducS-pJq42Vjz9-Zf9t2FsFtml4C3amGcoQ/exec",
 	allowRetakeQuiz: false,
 	maxNumRetake: 100,
 	upperMarkForRetake: 6,
@@ -117,7 +117,7 @@ const options =
 	playSounds: false,
 	hasIntroText: false,
 	hasEpilogueText: false,
-	askPrintAtTheEnd: false,
+	askPrintAtTheEnd: true,
 	selfRegistrationLink: true,
 	loginInsteadEmail: false,
 	authFromUrlParams: false,
