@@ -1,0 +1,2975 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "4.1.0",
+    "title": "Node.js QuizFaber APIs Documentation",
+    "description": "This is the Swagger documentation of a set of APIs for managing quizzes made with QuizFaber",
+    "termsOfService": "http://api_url/terms/",
+    "contact": {
+      "name": "Luca Galli",
+      "email": "info@quizfaber.com",
+      "url": "https://www.quizfaber.com/"
+    },
+    "license": {
+      "name": "GPLv3",
+      "url": "https://opensource.org/licenses/GPL-3.0"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3313/",
+      "description": "Local server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "APIs for authentication"
+    },
+    {
+      "name": "Utility APIs"
+    },
+    {
+      "name": "Manage sessions APIs"
+    },
+    {
+      "name": "Quiz results APIs"
+    },
+    {
+      "name": "Manage quiz APIs"
+    },
+    {
+      "name": "Manage users APIs"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [ "APIs for authentication" ],
+        "description": "Login into the QuizFaber Node.js server, obtaining the JWT token for authentication",
+        "operationId": "postLogin",
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true,
+          "description": "User credential"
+        },
+        "responses": {
+          "200": {
+            "description": "Login successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changepwd": {
+      "post": {
+        "tags": [ "APIs for authentication" ],
+        "description": "Change the password",
+        "operationId": "postChangePwd",
+        "parameters": [
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The old and new password",
+          "content": {
+            "x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePwdRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Change password successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registration": {
+      "post": {
+        "tags": [ "APIs for authentication" ],
+        "description": "Registration of a user",
+        "operationId": "postRegistration",
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          },
+          "required": true,
+          "description": "The user information needed for registration"
+        },
+        "responses": {
+          "200": {
+            "description": "Registration successfully",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "description": "Logout and close current session",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "APIs for authentication" ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequest"
+              }
+            }
+          },
+          "required": true,
+          "description": "Data to update in quiz session after logout"
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "tags": [ "Utility APIs" ],
+        "description": "Get the version of Node.js package, Node.js version, QuizFaber database",
+        "operationId": "getVersion",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Get version successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionResponse"
+                },
+                "example": {
+                  "DbVersion": 2,
+                  "NodejsVersion": "v14.15.1",
+                  "PackageVersion": "2.0.0"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checklogin": {
+      "get": {
+        "tags": [ "Utility APIs" ],
+        "description": " Verify if a user is already registered",
+        "operationId": "getChecklogin",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Login name to check"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "404": {
+            "description": "User not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getlastsession": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage sessions APIs" ],
+        "description": "Get the last sessions for quiz recovery",
+        "operationId": "getLastSession",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Session to exclude in the search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get last session successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LastSessionResponse"
+                },
+                "example": {
+                  "SessionID": "cc2253d2-361d-4369-9bd1-24585da77f72",
+                  "SessionData": "",
+                  "DateCreated": "27/03/2021 09:15",
+                  "DateLastUpdate": "25/03/2021 11:11"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Last session not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getsessions": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage sessions APIs" ],
+        "description": "Get all the sessions header",
+        "operationId": "getSessions",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Maximum number of rows (used in GUI for pagination)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Starting row number (used in GUI for pagination)"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Filter for user role (if not specified, gets sessions for any role)"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Filter for user ID (if not specified, gets sessions for any user)"
+          },
+          {
+            "name": "groupId",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Filter for group ID (if not specified, gets sessions for all groups)"
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Order by field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get sessions successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionsResponse"
+                },
+                "example": [
+                  {
+                    "PersonName": "abi",
+                    "UserIdentity": "normal",
+                    "SessionID": "cc2253d2-361d-4369-9bd1-24585da77f72",
+                    "DateCreated": "27/03/2021 09:15",
+                    "IpLogin": "fe80::24b1:6f83:a3ea:aac5%78",
+                    "SessionData": "",
+                    "PartialCountQst": 4,
+                    "DateLastUpdate": "25/03/2021 11:11",
+                    "QuizID": 42,
+                    "IpLogout": "::ffff:10.7.193.43",
+                    "TotalCount": 65
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatesession": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage sessions APIs" ],
+        "description": " Update a session with last question answered",
+        "operationId": "postUpdateSession",
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequest"
+              },
+              "example": {
+                "sessionId": "83698308-7b1d-42a9-9486-4fe3289f519d",
+                "sessionData": {
+                  "question": {
+                    "typeOfQuestion": 1,
+                    "num": 4,
+                    "isSingleAns": false,
+                    "weight": 1,
+                    "answers": [
+                      {
+                        "choice": 0,
+                        "valuation": -1,
+                        "ansWeight": 1,
+                        "noAnsWeight": 0,
+                        "additionalText": "",
+                        "shortTextAnswer": "Indicizzazione",
+                        "shortTextRemark": "",
+                        "isGuess": true,
+                        "score": 0
+                      },
+                      {
+                        "choice": 1,
+                        "valuation": 1,
+                        "ansWeight": 1,
+                        "noAnsWeight": 0,
+                        "additionalText": "",
+                        "shortTextAnswer": "Tipologia dei supporti ",
+                        "shortTextRemark": "",
+                        "isGuess": true,
+                        "score": 0
+                      },
+                      {
+                        "choice": 0,
+                        "valuation": 1,
+                        "ansWeight": 1,
+                        "noAnsWeight": 0,
+                        "additionalText": "",
+                        "shortTextAnswer": "Hardware",
+                        "shortTextRemark": "",
+                        "isGuess": false,
+                        "score": 0
+                      },
+                      {
+                        "choice": 0,
+                        "valuation": 1,
+                        "ansWeight": 1,
+                        "noAnsWeight": 0,
+                        "additionalText": "",
+                        "shortTextAnswer": "Definizione dell’organizzazione ",
+                        "shortTextRemark": "",
+                        "isGuess": false,
+                        "score": 0
+                      },
+                      {
+                        "choice": 0,
+                        "valuation": 1,
+                        "ansWeight": 1,
+                        "noAnsWeight": 0,
+                        "additionalText": "",
+                        "shortTextAnswer": "Software",
+                        "shortTextRemark": "",
+                        "isGuess": false,
+                        "score": 0
+                      }
+                    ],
+                    "alreadyAnswered": true,
+                    "nScore": 2,
+                    "maxScore": 5,
+                    "minScore": 0,
+                    "nPoints": 0,
+                    "correctScore": 1,
+                    "wrongScore": 0,
+                    "blankScore": 0,
+                    "nAnswers": 5,
+                    "valid": -1,
+                    "shortTextQuestion": "Parlando di archivi si deve tener conto di:",
+                    "timeToAnswer": 0,
+                    "noChoice": false
+                  },
+                  "questionIndex": 3
+                }
+              }
+            }
+          },
+          "required": true,
+          "description": "The session data to update"
+        },
+        "responses": {
+          "200": {
+            "description": "Session updated",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatesessionfirst": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage sessions APIs" ],
+        "description": " Update a session, inizialized with quiz data before the quiz start",
+        "operationId": "postUpdateSessionFirst",
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSessionRequestFirst"
+              },
+              "example": {
+
+                "questions": [ null, null, null ],
+                "currentQuestionPage": 1,
+                "isQuizCompleted": false,
+                "isQuizAbandoned": false,
+                "startTime": 1621193119,
+                "dateStartQuiz": "2021-05-16T19:25:19.790Z",
+                "dateCompleted": null,
+                "dateCompletedStr": "",
+                "time": 0,
+                "nRight": 0,
+                "nWrong": 0,
+                "nToDo": 3,
+                "nNotValuated": 0,
+                "nNotAnswered": 0,
+                "mark": 10,
+                "points": 0,
+                "computeMarkErr": 0,
+                "timeToAnswer": 0,
+                "ordineDomande": [ 0, 1, 2 ],
+                "allSlidesIndex_before": [
+                  [],
+                  [],
+                  []
+                ],
+                "allSlidesIndex_after": [
+                  [],
+                  [],
+                  []
+                ],
+                "isQstDisplayed": [ 0, 0, 0 ],
+                "numOfRetake": 12
+              }
+            }
+          },
+          "required": true,
+          "description": "The session data to update"
+        },
+        "responses": {
+          "200": {
+            "description": "Session updated",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/removesessions": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage sessions APIs" ],
+        "description": "Remove sessions",
+        "operationId": "postRemoveSessions",
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveSessionsRequest"
+              },
+              "example": {
+                "sessions": [
+                  {
+                    "sessionId": "6032efd8-53b5-49d3-98fd-0f0d04469399"
+                  },
+                  {
+                    "sessionId": "4a17deb4-02b4-4659-8af4-85a4bb81cdc9"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true,
+          "description": "The session ID to be removed"
+        },
+        "responses": {
+          "200": {
+            "description": "Sessions deleted",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results": {
+      "post": {
+        "description": "Insert the quiz result",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getresultsabstract": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "description": "Get all the titles (and few other information) of the quizzes for which there are results stored",
+        "operationId": "getResultAbstract",
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Get results abstract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetResultsAbstractResponse"
+                },
+                "example": [
+                  {
+                    "ID": 1,
+                    "Title": "openans - open answer",
+                    "User": "Anonymous - anonymous@anonymous.nowhere",
+                    "Date": "2021-03-23T07:31:57.000Z",
+                    "DateStr": "23/03/2021 08:31",
+                    "Mark": 3,
+                    "Points": 0
+                  },
+                  {
+                    "ID": 2,
+                    "Title": "questionario - questionario",
+                    "User": "Anonymous - anonymous@anonymous.nowhere",
+                    "Date": "2021-03-23T09:56:55.000Z",
+                    "DateStr": "23/03/2021 10:56",
+                    "Mark": 0,
+                    "Points": 2
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getresults": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "description": "Gets the quizzes results given some filters",
+        "operationId": "getResults",
+        "parameters": [
+          {
+            "name": "top",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Maximum number of rows (used in GUI for pagination)"
+          },
+          {
+            "name": "last",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Results in the last minutes (used in GUI for pagination)"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for title"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for user"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for completed date from"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for completed date to"
+          },
+          {
+            "name": "fromMark",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for final mark from"
+          },
+          {
+            "name": "toMark",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Filter for final mark to"
+          },
+          {
+            "name": "incDup",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "if 1, include duplicated results; 0 otherwise"
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Order by field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetResultsResponse"
+                },
+                "example": [
+                  {
+                    "Answers": [],
+                    "Header": {
+                      "Name": "questionario",
+                      "Title": "questionario",
+                      "Author": "mario rossi",
+                      "Argument": "argomenti vari",
+                      "Duration": 1800,
+                      "NumOfQuestions": 60
+                    },
+                    "Id": 50,
+                    "UserName": "abi",
+                    "UserLogin": "normal",
+                    "DateCompleted": "27/03/2021 08:15",
+                    "ElapsedTime": 7,
+                    "HighestMark": 10,
+                    "NumCorrectAnswers": 1,
+                    "NumWrongAnswers": 0,
+                    "NumNotValutated": 0,
+                    "NumNotAnswered": 59,
+                    "FinalMark": 0,
+                    "FinalPoints": 1
+                  },
+                  {
+                    "Answers": [],
+                    "Header": {
+                      "Name": "MASTERXQUESTIONARI",
+                      "Title": "MASTERXQUESTIONARI",
+                      "Author": "pinco pallo",
+                      "Argument": "argomenti vari",
+                      "Duration": 1800,
+                      "NumOfQuestions": 60
+                    },
+                    "Id": 49,
+                    "UserName": "abi",
+                    "UserLogin": "normal",
+                    "DateCompleted": "27/03/2021 08:15",
+                    "ElapsedTime": 4,
+                    "HighestMark": 10,
+                    "NumCorrectAnswers": 1,
+                    "NumWrongAnswers": 0,
+                    "NumNotValutated": 0,
+                    "NumNotAnswered": 59,
+                    "FinalMark": 0,
+                    "FinalPoints": 1
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getresultdetails": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "description": "Gets the questions of a quiz result, given its ID",
+        "operationId": "getResultDetails",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": true,
+            "description": "Quiz result ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The details of a result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetResultDetailsResponse"
+                },
+                "example": {
+                  "Answers": [
+                    {
+                      "TypeOfQuest": 2,
+                      "QuestNum": 1,
+                      "Weight": 1,
+                      "SelectedAnswers": "1 ; 0",
+                      "CorrectedAnswers": "1 ; -1",
+                      "Response": "2 [0 - 2]",
+                      "ShortTextQuestion": "domanda del tipo vero o falso",
+                      "Valid": 1,
+                      "Points": 1
+                    },
+                    {
+                      "TypeOfQuest": 101,
+                      "QuestNum": 2,
+                      "Weight": 1,
+                      "SelectedAnswers": "0 ; 1 ; 0 ; 0",
+                      "CorrectedAnswers": "1 ; 1 ; 1 ; 1",
+                      "Response": "-1 [-4 - 8]",
+                      "ShortTextQuestion": "Domanda con punteggio",
+                      "Valid": 3,
+                      "Points": -1
+                    },
+                    {
+                      "TypeOfQuest": 1,
+                      "QuestNum": 3,
+                      "Weight": 1,
+                      "SelectedAnswers": "0 ; 1",
+                      "CorrectedAnswers": "1 ; -1",
+                      "Response": "0 [0 - 2]",
+                      "ShortTextQuestion": "Scelta semplice uno due tre",
+                      "Valid": -1,
+                      "Points": 0
+                    },
+                    {
+                      "TypeOfQuest": 3,
+                      "QuestNum": 4,
+                      "Weight": 1,
+                      "SelectedAnswers": "",
+                      "CorrectedAnswers": "0",
+                      "Response": "0 [0 - 0]",
+                      "ShortTextQuestion": "scrivi ciò che vuoi nel commento ",
+                      "Valid": 2,
+                      "Points": 0
+                    }
+                  ],
+                  "Revision": {
+                    "Report": "",
+                    "Origin": null,
+                    "Charset": null,
+                    "Language": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "example": "Bad request"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkresult": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "description": "Verify if a user has already answered to a given quiz , called just after login",
+        "operationId": "getCheckResults",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Quiz name"
+          },
+          {
+            "name": "login",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "User login"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Quiz ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found result",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckResultResponse"
+                },
+                "example": {
+                  "NumOfRetake": 0,
+                  "FinalMark": 10
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "example": "Bad request"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Quiz result not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gettitles": {
+      "get": {
+        "description": "Get quizzes title and other information",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage quiz APIs" ],
+        "operationId": "getTitles",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Maximum number of rows (used in GUI for pagination)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Starting row number (used in GUI for pagination)"
+          },
+          {
+            "name": "state",
+            "required": false,
+            "type": "array",
+            "description": "Array of quiz states (0=draft, 1=completed, 2=published..)",
+            "example": [ 0, 1, 2, 10 ],
+            "in": "query",
+            "items": {
+              "type": "integer",
+              "description": "a quiz state"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of quiz titles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTitlesResponse"
+                },
+                "example": [
+                  {
+                    "Id": 1,
+                    "Name": "openans",
+                    "Title": "open answer",
+                    "Author": "mario rossi",
+                    "Argument": "argomenti vari",
+                    "Season": "2020",
+                    "State": 0,
+                    "IntroText": "",
+                    "EpiText": "",
+                    "NumQuestions": 6,
+                    "Link": "",
+                    "DateCreated": "16/04/2021 09:11",
+                    "DateModified": "16/04/2021 09:11",
+                    "StateDescr": "Draft"
+                  },
+                  {
+                    "Id": 3,
+                    "Name": "alberisacri",
+                    "Title": "Alberi Sacri",
+                    "Author": "Mario Rossi",
+                    "Argument": "",
+                    "Season": "2020",
+                    "State": 0,
+                    "IntroText": "",
+                    "EpiText": "",
+                    "NumQuestions": 5,
+                    "Link": "",
+                    "DateCreated": "16/04/2021 09:12",
+                    "DateModified": "16/04/2021 09:12",
+                    "StateDescr": "Draft"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/editresultdetails": {
+      "post": {
+        "description": "Update the score of a question that belong to a quiz results",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "operationId": "postEditResultDetails",
+        "parameters": [],
+        "requestBody": {
+          "description": "List of results details to edit",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditResultDetailsRequest"
+              },
+              "example": {
+                "results": [
+                  {
+                    "Id": 1,
+                    "Valid": 1,
+                    "Score": 1,
+                    "MaxScore": 1,
+                    "MinScore": 0,
+                    "Points": 1,
+                    "Feedback": "all ok"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Edit results successfully",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "example": "Bad request"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/editresult": {
+      "post": {
+        "description": "Update the quiz results for teacher review",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "operationId": "postEditResult",
+        "parameters": [],
+        "requestBody": {
+          "description": "Quiz result to edit",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditResultRequest"
+              },
+              "example": {
+                "Id": 66,
+                "ReviewMark": 10,
+                "FinalPoints": 8,
+                "RightQuestsNum": 1,
+                "WrongQuestsNum": 2,
+                "NotAnsweredQuestsNum": 3,
+                "NotValuatedQuestsNum": 4
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Edit results successfully",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "example": "Bad request"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                },
+                "example": "Not Found"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/removeresults": {
+      "post": {
+        "description": "Remove the quiz results",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Quiz results APIs" ],
+        "operationId": "postRemoveResult",
+        "requestBody": {
+          "description": "Array of quiz results to permanently remove",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveResultsRequest"
+              },
+              "example": {
+                "results": [
+                  {
+                    "resultId": 111
+                  },
+                  {
+                    "resultId": 222
+                  },
+                  {
+                    "resultId": 333
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "results successfully removed",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                },
+                "example": "OK"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "example": "Bad request"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getloggedusers": {
+      "get": {
+        "description": "Gets the logged users",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage users APIs" ],
+        "operationId": "getLoggedUsers",
+        "parameters": [
+          {
+            "name": "quizId",
+            "in": "query",
+            "type": "integer",
+            "required": true,
+            "description": "Quiz ID"
+          },
+          {
+            "name": "quizName",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Quiz name"
+          },
+          {
+            "name": "groupId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Group ID"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Module ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of logged users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetLoggedUsersResponse"
+                },
+                "example": [
+                  {
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getremainingusers": {
+      "get": {
+        "description": "Gets the remaining users into quiz",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage users APIs" ],
+        "operationId": "getRemainingUsers",
+        "parameters": [
+          {
+            "name": "quizId",
+            "in": "query",
+            "type": "integer",
+            "required": true,
+            "description": "Quiz ID"
+          },
+          {
+            "name": "groupId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Group ID"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Module ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of remaining users into quiz",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRemainingUsersResponse"
+                },
+                "example": [
+                  {
+                    "ID": 568,
+                    "PersonName": "pippo",
+                    "UserIdentity": "pippo@hotmail.it"
+                  },
+                  {
+                    "ID": 569,
+                    "PersonName": "pluto",
+                    "UserIdentity": "pluto@gmail.com"
+                  },
+                  {
+                    "ID": 570,
+                    "PersonName": "paperino",
+                    "UserIdentity": "paperino@gmail.com"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getquestionstext": {
+      "get": {
+        "description": "Gets the questions text for a given quiz",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [ "Manage quiz APIs" ],
+        "operationId": "getQuestionsText",
+        "parameters": [
+          {
+            "name": "quizName",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "Quiz name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Questions text for a given quiz",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetQuestionsTextResponse"
+                },
+                "example": [
+                  {
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "example": "Unauthorized"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                },
+                "example": "Forbidden"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                },
+                "example": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "description": "Login name",
+            "type": "string"
+          },
+          "pwd": {
+            "description": "Password MD5 hashed",
+            "type": "string"
+          }
+        }
+      },
+      "LogoutRequest": {
+        "type": "object",
+        "properties": {
+          "quizId": {
+            "description": "ID of quiz result",
+            "type": "integer"
+          },
+          "sessionId": {
+            "description": "ID of quiz session",
+            "type": "string"
+          }
+        }
+      },
+      "ChangePwdRequest": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "description": "Login name",
+            "type": "string"
+          },
+          "pwd": {
+            "description": "Actual password MD5 hashed",
+            "type": "string"
+          },
+          "newPwd": {
+            "description": "New password MD5 hashed",
+            "type": "string"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The user ID in the database table",
+            "type": "string",
+            "example": 1
+          },
+          "name": {
+            "description": "The name or surname or nikname, whatever identify a person",
+            "type": "string",
+            "example": "foo"
+          },
+          "email": {
+            "description": "The login name, i.e. his/her email",
+            "type": "string",
+            "example": "bar"
+          },
+          "password": {
+            "description": "Password MD5 hashed",
+            "type": "string"
+          },
+          "role": {
+            "description": "The user role: 1 for administrator, 2 for user ",
+            "type": "integer",
+            "example": 1
+          },
+          "isEnabled": {
+            "description": "1 means enabled, 0 disabled",
+            "type": "integer",
+            "example": 1
+          },
+          "authToken": {
+            "description": "JWT authentication token",
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjE5MjQ1MDU1LCJleHAiOjE2MTkzMzE0NTV9.qimVtPdBLIQDnoz8Adh2ja0WuL--0kcitG8tfILLrBo"
+          },
+          "sessionId": {
+            "description": "Session ID for tracking the user activity between a login and a logout",
+            "type": "string",
+            "example": "ccc3ea2b-7446-4cb0-b1d8-fa7db57ccb8d"
+          },
+          "otherFields": {
+            "description": "A JSON with another user information (i.e. his/her birth date, adress and so on)",
+            "type": "string"
+          }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name or surname or nikname, whatever identify a person",
+            "type": "string"
+          },
+          "email": {
+            "description": "The login name, i.e. his/her email",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password MD5 hashed",
+            "type": "string"
+          },
+          "otherFields": {
+            "description": "A JSON with another user information (i.e. his/her birth date, adress and so on)",
+            "type": "string"
+          }
+        }
+      },
+      "VersionResponse": {
+        "type": "object",
+        "properties": {
+          "DbVersion": {
+            "description": "The QuizFaber database version",
+            "type": "string"
+          },
+          "NodejsVersion": {
+            "description": "The Node.js version",
+            "type": "string"
+          },
+          "PackageVersion": {
+            "description": "QuizFaber package JSON version",
+            "type": "string"
+          }
+        }
+      },
+      "LastSessionResponse": {
+        "type": "object",
+        "properties": {
+          "SessionID": {
+            "description": "Session ID",
+            "type": "string"
+          },
+          "SessionData": {
+            "description": "The data into the session",
+            "type": "string"
+          },
+          "DateCreated": {
+            "description": "Session create date",
+            "type": "string"
+          },
+          "DateLastUpdate": {
+            "description": "Session last update date",
+            "type": "string"
+          }
+        }
+      },
+      "SessionsResponse": {
+        "type": "array",
+        "description": "The list of sessions",
+        "items": {
+          "type": "object",
+          "properties": {
+            "PersonName": {
+              "description": "Person name",
+              "type": "string"
+            },
+            "UserIdentity": {
+              "description": "Login name",
+              "type": "string"
+            },
+            "SessionID": {
+              "description": "Session ID",
+              "type": "string"
+            },
+            "DateCreated": {
+              "description": "Session create date",
+              "type": "string"
+            },
+            "IpLogin": {
+              "description": "Login IP address",
+              "type": "string"
+            },
+            "SessionData": {
+              "description": "The data into the session",
+              "type": "string"
+            },
+            "PartialCountQst": {
+              "description": "Number of questions answered at this time",
+              "type": "integer"
+            },
+            "DateLastUpdate": {
+              "description": "Session last update date",
+              "type": "string"
+            },
+            "QuizID": {
+              "description": "The quiz ID of Quizzes table",
+              "type": "integer"
+            },
+            "IpLogout": {
+              "description": "Logout IP address",
+              "type": "string"
+            },
+            "TotalCount": {
+              "description": "Total number of rows (used in GUI for pagination)",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "UpdateSessionRequest": {
+        "description": "The data to update",
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "description": "Session ID to update",
+            "type": "string",
+            "required": true
+          },
+          "sessionData": {
+            "description": "The data into the session to update",
+            "type": "object",
+            "required": true,
+            "properties": {
+              "question": {
+                "description": "QuizFaber question",
+                "type": "object"
+              },
+              "questionIndex": {
+                "description": "Index of question (from 0)",
+                "type": "integer"
+              },
+              "time": {
+                "description": "current elapsed time",
+                "type": "numeric"
+              },
+              "currentQuestionPage": {
+                "description": "number of current question page",
+                "type": "numeric"
+              }
+            }
+          }
+        }
+      },
+      "UpdateSessionRequestFirst": {
+        "description": "The data to update",
+        "type": "object",
+        "properties": {
+          "currentQuestionPage": {
+            "description": "Current page number",
+            "type": "numeric"
+          },
+          "isQuizCompleted": {
+            "description": "If the quiz is completed",
+            "type": "boolean"
+          },
+          "isQuizAbandoned": {
+            "description": "If the quiz is abandoned",
+            "type": "boolean"
+          },
+          "startTime": {
+            "description": "At what time the quiz started",
+            "type": "numeric"
+          },
+          "dateStartQuiz": {
+            "description": "At what date and time the quiz started",
+            "type": "string"
+          },
+          "dateCompleted": {
+            "description": "At what date and time the quiz ended",
+            "type": "string"
+          },
+          "dateCompletedStr": {
+            "description": "At what date and time the quiz ended, formatted string",
+            "type": "string"
+          },
+          "time": {
+            "description": "current elapsed time",
+            "type": "numeric"
+          },
+          "nRight": {
+            "description": "Number of right answers",
+            "type": "numeric"
+          },
+          "nWrong": {
+            "description": "Number of wrong answers",
+            "type": "numeric"
+          },
+          "nToDo": {
+            "description": "Number of to do answers",
+            "type": "numeric"
+          },
+          "nNotValuated": {
+            "description": "Number of not valuated answers",
+            "type": "numeric"
+          },
+          "nNotAnswered": {
+            "description": "Number of not answered questions",
+            "type": "numeric"
+          },
+          "mark": {
+            "description": "quiz mark",
+            "type": "numeric"
+          },
+          "points": {
+            "description": "quiz points",
+            "type": "numeric"
+          },
+          "computeMarkErr": {
+            "description": "if the compute of mark gave an error",
+            "type": "boolean"
+          },
+          "timeToAnswer": {
+            "description": "time to answer",
+            "type": "numeric"
+          },
+          "ordineDomande": {
+            "description": "array of sorted question numbers",
+            "type": "array"
+          },
+          "numOfRetake": {
+            "description": "Number of times the quiz was retaken",
+            "type": "array"
+          }
+        }
+      },
+      "RemoveSessionsRequest": {
+        "description": "The sessions to remove",
+        "type": "object",
+        "properties": {
+          "sessions": {
+            "description": "The list of session IDs",
+            "type": "array",
+            "items": {
+              "properties": {
+                "sessionId": {
+                  "description": "Session ID to remove",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetResultsAbstractResponse": {
+        "description": "The abstracts of quiz results",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ID": {
+              "description": "Quiz result ID",
+              "type": "integer"
+            },
+            "Title": {
+              "description": "Title",
+              "type": "string"
+            },
+            "User": {
+              "description": "User name and login",
+              "type": "string"
+            },
+            "Date": {
+              "description": "Date of quiz completed, standard ISO 8601 (called also Zulu time)",
+              "type": "string"
+            },
+            "DateStr": {
+              "description": "Date of quiz completed, formatted with: dd/MM/yyyy HH:mm",
+              "type": "string"
+            },
+            "Mark": {
+              "description": "Final mark",
+              "type": "number"
+            },
+            "Points": {
+              "description": "Final points",
+              "type": "number"
+            }
+          }
+        }
+      },
+      "GetResultsResponse": {
+        "description": "The quiz results",
+        "type": "array",
+        "items": {
+          "properties": {
+            "ID": {
+              "description": "Quiz result ID",
+              "type": "integer"
+            },
+            "UserName": {
+              "description": "User name",
+              "type": "string"
+            },
+            "UserLogin": {
+              "description": "User login",
+              "type": "string"
+            },
+            "DateCompleted": {
+              "description": "Date of quiz completed, formatted with: dd/MM/yyyy HH:mm",
+              "type": "string"
+            },
+            "ElapsedTime": {
+              "description": "Time (in minutes) for answering quiz",
+              "type": "integer"
+            },
+            "HighestMark": {
+              "description": "Maximum mark for the quiz",
+              "type": "integer"
+            },
+            "LowestMark": {
+              "description": "Minimum mark for the quiz",
+              "type": "integer"
+            },
+            "RoundMark": {
+              "description": "Round of the mark",
+              "type": "decimal"
+            },
+            "NumCorrectAnswers": {
+              "description": "Num of correct questions",
+              "type": "integer"
+            },
+            "NumWrongAnswers": {
+              "description": "Num of wrong questions",
+              "type": "integer"
+            },
+            "NumNotValutated": {
+              "description": "Num of not valuated questions",
+              "type": "integer"
+            },
+            "NumNotAnswered": {
+              "description": "Num of not answered questions",
+              "type": "integer"
+            },
+            "FinalMark": {
+              "description": "Final mark",
+              "type": "decimal"
+            },
+            "FinalPoints": {
+              "description": "Final points",
+              "type": "decimal"
+            },
+            "ReviewMark": {
+              "description": "Final mark after teacher review",
+              "type": "decimal"
+            },
+            "ReviewDate": {
+              "description": "Date of teacher review",
+              "type": "string"
+            },
+            "Answers": {
+              "description": "List of answers",
+              "type": "array"
+            },
+            "Header": {
+              "description": "Quiz header",
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "description": "Quiz name",
+                  "type": "string"
+                },
+                "Title": {
+                  "description": "Quiz title",
+                  "type": "string"
+                },
+                "Author": {
+                  "description": "Quiz author",
+                  "type": "string"
+                },
+                "Argument": {
+                  "description": "Quiz argument",
+                  "type": "string"
+                },
+                "Duration": {
+                  "description": "Quiz duration, in seconds",
+                  "type": "integer"
+                },
+                "NumOfQuestions": {
+                  "description": "Number of questions",
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetResultDetailsResponse": {
+        "description": "The details of a quiz results",
+        "type": "object",
+        "properties": {
+          "Answers": {
+            "description": "list of answers",
+            "type": "array",
+            "items": {
+              "properties": {
+                "TypeOfQuest": {
+                  "description": "The question type (1 = multiple answers, 2 = boolean, ..)",
+                  "type": "integer"
+                },
+                "QuestNum": {
+                  "description": "The question number (starting from 1)",
+                  "type": "integer"
+                },
+                "Weight": {
+                  "description": "The weight of question",
+                  "type": "decimal"
+                },
+                "SelectedAnswers": {
+                  "description": "A description of selected answer",
+                  "type": "string"
+                },
+                "CorrectedAnswers": {
+                  "description": "A description of correction of answers",
+                  "type": "string"
+                },
+                "Score": {
+                  "description": "The score for that answer",
+                  "type": "integer"
+                },
+                "MaxScore": {
+                  "description": "The maximum score for that answer",
+                  "type": "integer"
+                },
+                "MinScore": {
+                  "description": "The minimum score for that answer",
+                  "type": "integer"
+                },
+                "ShortTextQuestion": {
+                  "description": "A short text of the question",
+                  "type": "string"
+                },
+                "Valid": {
+                  "description": "A brief response : 1 = correct, -1 = wrong answer, 0 = not answered, 2 = not valuated, 3 = partially correct answer",
+                  "type": "integer"
+                },
+                "Points": {
+                  "description": "Answer points",
+                  "type": "number"
+                },
+                "Feedback": {
+                  "description": "The teacher feedback to question after the examinee answer",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Revision": {
+            "description": "revision of the quiz",
+            "type": "object",
+            "properties": {
+              "Report": {
+                "description": "the HTML report page",
+                "type": "string"
+              },
+              "Origin": {
+                "description": "the HTML page of questions",
+                "type": "string"
+              },
+              "Charset": {
+                "description": "the HTML charset",
+                "type": "string"
+              },
+              "Language": {
+                "description": "the language of the HTML text",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "CheckResultResponse": {
+        "description": "How many times the quiz was retook",
+        "type": "object",
+        "properties": {
+          "NumOfRetake": {
+            "description": "Number of retake",
+            "type": "integer"
+          },
+          "FinalMark": {
+            "description": "The mark of last quiz retake",
+            "type": "decimal"
+          }
+        }
+      },
+      "GetTitlesResponse": {
+        "description": "List of quiz titles",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "integer",
+              "description": "Quiz ID"
+            },
+            "Name": {
+              "type": "string",
+              "description": "Quiz name"
+            },
+            "Title": {
+              "type": "string",
+              "description": "Quiz title"
+            },
+            "Author": {
+              "type": "string",
+              "description": "Quiz author"
+            },
+            "Argument": {
+              "type": "string",
+              "description": "Quiz argument"
+            },
+            "Season": {
+              "type": "string",
+              "description": "The season when the quiz is published"
+            },
+            "State": {
+              "type": "integer",
+              "description": "Quiz state (0=draft, 1=completed, 2=published..)"
+            },
+            "IntroText": {
+              "type": "string",
+              "description": "Introduction text"
+            },
+            "EpiText": {
+              "type": "string",
+              "description": "Epilogue text"
+            },
+            "NumQuestions": {
+              "type": "integer",
+              "description": "Number of questions"
+            },
+            "Link": {
+              "type": "string",
+              "description": "Link to quiz online"
+            },
+            "DateCreated": {
+              "type": "string",
+              "description": "Quiz creation date, with the format: dd/MM/yyyy HH:mm"
+            },
+            "DateModified": {
+              "type": "string",
+              "description": "Quiz last modify date, with the format: dd/MM/yyyy HH:mm"
+            },
+            "StateDescr": {
+              "type": "string",
+              "description": "Description of quiz state (draft, completed, published..)"
+            }
+          }
+        }
+      },
+      "EditResultDetailsRequest": {
+        "description": "List of results details to edit",
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Id": {
+                  "type": "integer",
+                  "description": "Results details ID (ID of table QuizResultQuestion)"
+                },
+                "Valid": {
+                  "type": "integer",
+                  "description": "Valid means : 1= correct, -1=wrong, 0=not answered, 2=not valuated, 3=partially correct"
+                },
+                "Score": {
+                  "type": "integer",
+                  "description": "The score"
+                },
+                "MaxScore": {
+                  "type": "integer",
+                  "description": "The maximum score"
+                },
+                "MinScore": {
+                  "type": "integer",
+                  "description": "The minumum score"
+                },
+                "Points": {
+                  "type": "decimal",
+                  "description": "The points"
+                },
+                "Feedback": {
+                  "type": "string",
+                  "description": "The teacher feedback to question after the examinee answer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "EditResultRequest": {
+        "description": "Quiz result to modify",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "Quiz result ID (ID of table QuizResult)"
+          },
+          "ReviewMark": {
+            "type": "decimal",
+            "description": "The mark after the teacher review"
+          },
+          "FinalPoints": {
+            "type": "decimal",
+            "description": "The points after the teacher review"
+          },
+          "RightQuestsNum": {
+            "type": "integer",
+            "description": "Numbers of right answers"
+          },
+          "WrongQuestsNum": {
+            "type": "integer",
+            "description": "Numbers of wrong answers"
+          },
+          "NotAnsweredQuestsNum": {
+            "type": "integer",
+            "description": "Numbers of not answered questions"
+          },
+          "NotValuatedQuestsNum": {
+            "type": "integer",
+            "description": "Number of not valuated questions"
+          }
+        }
+      },
+      "RemoveResultsRequest": {
+        "description": "List of quiz result ID to remove",
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resultId": {
+                  "type": "integer",
+                  "description": "Quiz result ID"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetQuizPublishedResponse": {
+        "description": "Information about published quiz",
+        "type": "object",
+        "properties": {
+          "IntroText": {
+            "type": "string",
+            "description": "Introduction text"
+          },
+          "EpiText": {
+            "type": "string",
+            "description": "Introduction text"
+          },
+          "NumQuestions": {
+            "type": "integer",
+            "description": "Number of questions"
+          },
+          "Link": {
+            "type": "string",
+            "description": "URL to quiz that can be executed"
+          }
+        }
+      },
+      "GetLoggedUsersResponse": {
+        "description": "List of logged users",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "UserIdentity": {
+              "type": "string",
+              "description": "User login"
+            },
+            "PersonName": {
+              "type": "string",
+              "description": "Person name"
+            }
+          }
+        }
+      },
+      "GetRemainingUsersResponse": {
+        "description": "List of remaining users into quiz",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "integer",
+              "description": "User ID"
+            },
+            "UserIdentity": {
+              "type": "string",
+              "description": "User login"
+            },
+            "PersonName": {
+              "type": "string",
+              "description": "Person name"
+            }
+          }
+        }
+      },
+      "GetQuestionsTextResponse": {
+        "description": "List of question text for a given quiz",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "QuestNum": {
+              "type": "integer",
+              "description": "Number of question"
+            },
+            "ShortTextQuestion": {
+              "type": "string",
+              "description": "Short text of the question"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "string"
+      },
+      "Success": {
+        "type": "string"
+      },
+      "Unauthorized": {
+        "type": "string"
+      },
+      "NotFound": {
+        "type": "string"
+      },
+      "InternalServerError": {
+        "type": "string"
+      },
+      "Forbidden": {
+        "type": "string"
+      },
+      "BadRequest": {
+        "type": "string"
+      }
+    }
+  }
+}
