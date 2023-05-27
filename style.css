@@ -19,3 +19,8 @@ h1 {
    font-weight: 700;
    font-style: normal;
 }
+
+img {
+    float: down;
+    margin: 16px;
+}
