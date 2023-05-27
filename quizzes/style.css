@@ -11,7 +11,7 @@ h1 {
 }
 
 button {
-  background-image: linear-gradient(to right, #ff0000 0%, #ffff00 100%);
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   color: white;
   padding: 15px 32px;
   text-align: center;
