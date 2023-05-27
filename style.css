@@ -5,17 +5,17 @@ body {
 }
 
 p {     
-  color: #ffe4c4;
+  color: #2f4f4f;
   font-family: "Helvetica";
-  font-size: 40px;
+  font-size: 70px;
   font-weight: 400;
   font-style: normal;
 }
 
 h1 {
-   color: #deb887;
+   color: #228b22;
    font-family: "Helvetica";
-   font-size: 72px;
+   font-size: 100px;
    font-weight: 700;
    font-style: normal;
 }
