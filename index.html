@@ -1,17 +1,53 @@
 <!doctype html>
 <html lang="it">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M81MB1C679"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M81MB1C679');
+</script>
 <meta charset="utf-8">
 <title>Homepage</title>
 <meta name="author" content="FraV1982">
 <meta name="categories" content="Quiz">
 <meta name="robots" content="index, follow">
 <meta name="revisit-after" content="1 day">
+<link href="FraV1982's Quizzes.png" rel="icon" sizes="500x500" type="image/png">
+<link href="FraV1982's Quizzes.png" rel="icon" sizes="500x500" type="image/png">
+<link href="FraV1982's Quizzes.png" rel="icon" sizes="500x500" type="image/png">
+<link href="FraV1982's Quizzes.png" rel="apple-touch-icon" sizes="500x500">
 <link href="index.css" rel="stylesheet">
 <link href="index.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=League Spartan" rel="stylesheet">
 </head>
 <body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyB3TbWx1BT-JvWbTUEY-P17nVSRt74FKj0",
+    authDomain: "frav1982-quiz.firebaseapp.com",
+    projectId: "frav1982-quiz",
+    storageBucket: "frav1982-quiz.appspot.com",
+    messagingSenderId: "151962055346",
+    appId: "1:151962055346:web:11df7b3d17773a30d30fab",
+    measurementId: "G-M81MB1C679"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <div id="container">
 <div id="wb_Heading1" style="position:absolute;left:38px;top:27px;width:932px;height:40px;z-index:1;">
 <h1 id="Heading1">Ciao Mondo!</h1></div>
@@ -19,7 +55,7 @@
 <div id="wb_Text1" style="position:absolute;left:35px;top:117px;width:935px;height:60px;z-index:3;">
 <p>Work in progress... Nel frattempo, un test d'intelligenza!</p></div>
 <div id="wb_ThemeableButton1" style="position:absolute;left:41px;top:175px;width:224px;height:35px;z-index:4;">
-<a class="ui-button ui-corner-all" id="ThemeableButton1" href="https://frav1982-quiz.vercel.app/quizzes/quiz-di-prova/index.html" target="_blank" style="width:100%;height:100%;">Test d'Intelligenza</a></div>
+<a class="ui-button ui-corner-all" id="ThemeableButton1" href="https://frav1982-quiz.vercel.app/quizzes/index.html" target="_blank" style="width:100%;height:100%;">Test d'Intelligenza</a></div>
 </div>
 </body>
 </html>
