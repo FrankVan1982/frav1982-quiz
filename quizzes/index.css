@@ -1,0 +1,140 @@
+div#container
+{
+   width: 970px;
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body:before
+{
+   content: "";
+   position: fixed;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   z-index: -1;
+   background-image: linear-gradient(135deg, #1E90FF 0%, #00008B 100%);
+}
+body
+{
+   background-color: #00008B;
+   color: #000000;
+   font-family: "League Spartan Thin";
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0;
+   text-align: center;
+}
+#wb_Heading1
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #000000;
+   border-radius: 0px;
+   margin: 0;
+   padding: 0;
+   animation: fall 1000ms linear 0ms infinite normal both;
+   animation-play-state: paused;
+   text-align: center;
+}
+#Heading1
+{
+   color: #FFFFFF;
+   font-family: "League Spartan Thin ExtraBold";
+   font-weight: bold;
+   font-style: normal;
+   font-size: 32px;
+   margin: 0;
+   text-align: center;
+}
+#ThemeableButton1
+{
+   font-family: "League Spartan Thin";
+   font-weight: normal;
+   font-size: 20px;
+   font-style: normal;
+   display: inline-block;
+   position: relative;
+   vertical-align: middle;
+   user-select: none;
+   overflow: visible;
+   text-decoration: none;
+   cursor: pointer;
+}
+#wb_ThemeableButton1
+{
+   border-radius: 4px;
+   margin: 0;
+   vertical-align: top;
+}
+#ThemeableButton1
+{
+   box-sizing: border-box;
+   padding: 0;
+   text-align: center;
+}
+#wb_ThemeableButton1 .ui-button
+{
+   display: flex;
+   align-items: center;
+   margin: 0;
+   justify-content: center;
+}
+#ThemeableButton1
+{
+   color: #FFFFFF;
+   text-decoration: none;
+}
+#ThemeableButton1 :hover
+{
+   color: #FFFFFF;
+}
+#ThemeableButton1 :active
+{
+   color: #75ABFF;
+}
+#wb_ThemeableButton1 .ui-corner-all, #wb_ThemeableButton1 .ui-corner-left
+{
+   border-bottom-left-radius: 4px;
+   border-top-left-radius: 4px;
+}
+#wb_ThemeableButton1 .ui-corner-all, #wb_ThemeableButton1 .ui-corner-right
+{
+   border-bottom-right-radius: 4px;
+   border-top-right-radius: 4px;
+}
+#wb_ThemeableButton1 .ui-button
+{
+   background-image: linear-gradient(315deg, #E9FFFF 0%, #FFFFFF 100%);
+   border: 1px solid #FFFFFF;
+   color: #000000;
+}
+#wb_ThemeableButton1 .ui-state-hover, #wb_ThemeableButton1 .ui-button:hover
+{
+   border-color: #222222;
+   background-color: #00498F;
+   background-image: none;
+   color: #FFFFFF;
+}
+#wb_ThemeableButton1 .ui-state-active, #wb_ThemeableButton1 .ui-button:active
+{
+   border-color: #096AC8;
+   background-color: #292929;
+   background-image: none;
+   color: #75ABFF;
+}
+#HorizontalLine1
+{
+   border-color: #F5F5F5;
+   border-style: solid;
+   border-bottom-width: 8px;
+   border-top: 0;
+   border-left: 0;
+   border-right: 0;
+   height: 0 !important;
+   line-height: 0 !important;
+   margin: 0;
+   padding: 0;
+}
