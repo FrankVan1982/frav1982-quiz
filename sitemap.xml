@@ -1,27 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://frav1982-quiz.vercel.app/</loc>
-  <lastmod>2023-05-31T17:43:12+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://frav1982-quiz.vercel.app/quizzes/index.html</loc>
-  <lastmod>2023-05-31T17:43:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://frav1982-quiz.vercel.app/quizzes/quiz-di-prova/index.html</loc>
-  <lastmod>2023-05-31T17:43:12+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
-</urlset>
+<?xml version="1.0"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://frav1982-quiz.vercel.app/</loc><lastmod>2023-05-31</lastmod><changefreq>hourly</changefreq><priority/></url><url><loc>https://frav1982-quiz.vercel.app/quizzes/index.html</loc><lastmod>2023-05-31</lastmod><changefreq>hourly</changefreq><priority/></url><url><loc>https://frav1982-quiz.vercel.app/quizzes/quiz-di-prova/index.html</loc><lastmod>2023-05-31</lastmod><changefreq>hourly</changefreq><priority/></url><url><loc>https://frav1982-quiz.vercel.app/quizzes/quiz-di-prova/registration.html</loc><lastmod>2023-05-31</lastmod><changefreq>hourly</changefreq><priority/></url></urlset>
