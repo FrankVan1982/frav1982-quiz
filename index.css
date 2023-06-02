@@ -9,7 +9,7 @@ body
 {
    background-color: #DCDCDC;
    color: #FFFFFF;
-   font-family: "Lucida Sans Unicode";
+   font-family: "League Spartan Thin";
    font-weight: normal;
    font-size: 13px;
    line-height: 1.1875;
@@ -30,7 +30,7 @@ body
 #Heading1
 {
    color: #4F4F4F;
-   font-family: Impact;
+   font-family: "League Spartan Thin Black";
    font-weight: bold;
    font-style: normal;
    font-size: 32px;
